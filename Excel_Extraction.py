@@ -3,7 +3,7 @@ from tabulate import tabulate
 
 def Value_extraction():
 
-   #         INSERTAR DATOS AQUÍ  :D
+   #         INSERT DATA HERE  :D
    
    
    
