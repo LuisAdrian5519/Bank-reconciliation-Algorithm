@@ -14,3 +14,5 @@ The inconsistencies displayed in Excel stand for:
 - Incomes found in Excel Auxiliar document but not in Bank declaration
 - Outcomes found in Excel Auxiliar document but not in Bank declaration
 
+Note: Due to confidentiality agreements with my employer, this repository does not include the documents it processes. 
+
