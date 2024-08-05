@@ -11,7 +11,7 @@ import Excel_Extraction as Excel
 # Data Set-up
 
 Lista_de_valores_MNA_BBVA_Ingresos, Lista_de_valores_MNA_BBVA_Egresos, Lista_de_valores_MNA_BBVA_Fechas_Ingresos, Lista_de_valores_MNA_BBVA_Fechas_Egresos, Ingreso_Total, Egreso_Total, Referencias_MNA_BBVA_Ingresos, Referencias_MNA_BBVA_Egresos = PDF.Value_extraction()
-Lista_de_valores_Auxiliar_Ingresos, Lista_de_valores_Auxiliar_Egresos, Lista_de_valores_Auxiliar_Fechas_Ingresos, Lista_de_valores_Auxiliar_Fechas_Egresos, Referencias_Auxiliar_Ingresos, Referencias_Auxiliar_Egresos = Excel.Value_extraction()
+Lista_de_valores_Auxiliar_Ingresos, Lista_de_valores_Auxiliar_Egresos, Lista_de_valores_Auxiliar_Fechas_Ingresos, Lista_de_valores_Auxiliar_Fechas_Egresos, Referencias_Auxiliar_Ingresos, Referencias_Auxiliar_Egresos, Beneficiarios_Auxiliar_Ingresos, Beneficiarios_Auxiliar_Egresos = Excel.Value_extraction()
 
 print("")
 print("            Comparador de Dineros")

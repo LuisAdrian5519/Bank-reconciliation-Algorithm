@@ -27,7 +27,9 @@ def Value_extraction():
    Fechas_Ingresos = []
    Fechas_Egresos = []
    
-   Beneficiarios = []
+   Beneficiarios_General = []
+   Beneficiarios_Ingresos = []
+   Beneficiarios_Egresos = []
    
    Referencias_General_Auxiliar = []
    Referencias_Ingresos = []
@@ -46,7 +48,7 @@ def Value_extraction():
        Ingresos.append(row[Columna_para_ingresos].value)
        Ingresos_aux.append(row[Columna_para_ingresos].value)
        Egresos.append(row[Columna_para_egresos].value)
-       Beneficiarios.append(row[Columna_para_beneficiario].value)
+       Beneficiarios_General.append(row[Columna_para_beneficiario].value)
        Referencias_General_Auxiliar.append(row[Columna_para_referencias].value)
        
    Dias = [Fecha.day for Fecha in Fechas if Fecha is not None]
@@ -66,10 +68,12 @@ def Value_extraction():
        
            Fechas_Egresos.append(Dias[i])
            Referencias_Egresos.append(Referencias_General_Auxiliar[i])
+           Beneficiarios_Ingresos.append(Beneficiarios_General[i])
            
        else:
            
            Fechas_Ingresos.append(Dias[i])
            Referencias_Ingresos.append(Referencias_General_Auxiliar[i])
+           Beneficiarios_Egresos.append(Beneficiarios_General[i])
     
-   return Ingresos, Egresos, Fechas_Ingresos, Fechas_Egresos, Referencias_Ingresos, Referencias_Egresos
+   return Ingresos, Egresos, Fechas_Ingresos, Fechas_Egresos, Referencias_Ingresos, Referencias_Egresos, Beneficiarios_Ingresos, Beneficiarios_Egresos

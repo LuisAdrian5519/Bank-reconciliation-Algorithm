@@ -33,6 +33,10 @@ def Value_extraction():
    Referencias = []
    Referencias_Ingresos = []
    Referencias_Egresos = []
+   
+   Beneficiarios = []
+   Beneficiario_Ingresos = []
+   Beneficiario_Egresos = []
 
    Movimiento = 0
    Fecha = 0
@@ -60,7 +64,7 @@ def Value_extraction():
 
          if '$' in Line:
          
-            # Capture and Processing of Monetary Value After the '$' Symbol
+            # Capture and Processing of Monetary Value, references, and beneficiary
             
             split_line = Line.split()
             dollar_index = split_line.index('$')
