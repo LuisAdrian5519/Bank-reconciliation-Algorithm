@@ -1,17 +1,16 @@
 import openpyxl
-from tabulate import tabulate
 
 def Value_extraction():
 
    #         INSERT DATA HERE  :D
    
    
-   
-   Nombre_del_archivo_Excel = "Conciliación Banbajio Cta.01 Marzo 2024.xlsx"          # File
+   Nombre_del_archivo_Excel = "Conciliación Banbajio Cta.01 Enero 2024.xlsx"          # File
    Columna_para_fechas = 0                                                            # Excel Column for Dates data
+   Columna_para_beneficiario = 1                                                      # Excel Column for Beneficiary data
+   Columna_para_referencias = 2                                                       # Excel Column for References data
    Columna_para_ingresos = 3                                                          # Excel Column for Incomes data
    Columna_para_egresos = 4                                                           # Excel Column for Outcomes data
-   Columna_para_referencias = 2
    
    
    #        Beggining of algorithm
@@ -28,8 +27,9 @@ def Value_extraction():
    Fechas_Ingresos = []
    Fechas_Egresos = []
    
-   Referencias_General_Auxiliar1 = []
-   Referencias_General_Auxiliar2 = []
+   Beneficiarios = []
+   
+   Referencias_General_Auxiliar = []
    Referencias_Ingresos = []
    Referencias_Egresos = []
 
@@ -46,8 +46,8 @@ def Value_extraction():
        Ingresos.append(row[Columna_para_ingresos].value)
        Ingresos_aux.append(row[Columna_para_ingresos].value)
        Egresos.append(row[Columna_para_egresos].value)
-       Referencias_General_Auxiliar1.append(row[Columna_para_referencias].value)
-       Referencias_General_Auxiliar2.append(row[Columna_para_referencias].value)
+       Beneficiarios.append(row[Columna_para_beneficiario].value)
+       Referencias_General_Auxiliar.append(row[Columna_para_referencias].value)
        
    Dias = [Fecha.day for Fecha in Fechas if Fecha is not None]
    
@@ -65,11 +65,11 @@ def Value_extraction():
        if Ingresos_aux[i] == 0:
        
            Fechas_Egresos.append(Dias[i])
-           Referencias_Egresos.append(Referencias_General_Auxiliar2[i])
+           Referencias_Egresos.append(Referencias_General_Auxiliar[i])
            
        else:
            
            Fechas_Ingresos.append(Dias[i])
-           Referencias_Ingresos.append(Referencias_General_Auxiliar1[i])
+           Referencias_Ingresos.append(Referencias_General_Auxiliar[i])
     
    return Ingresos, Egresos, Fechas_Ingresos, Fechas_Egresos, Referencias_Ingresos, Referencias_Egresos
