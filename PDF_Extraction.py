@@ -6,10 +6,10 @@ def Value_extraction():
    
    
    
-   Nombre_del_archivo_PDF = "TMI Banbajio Edo Cta Marzo 2024.pdf"        # File
+   Nombre_del_archivo_PDF = "C:/Users/AUXILIARAMN/Documents/LUIS_ADRIAN/Bank-reconciliation-Algorithm/TMI Banbajio Edo Cta Enero 2024.pdf"        # File
    Páginas_a_leer = 15                                                   # Number Pages
-   Datos_a_ignorar_Inicio = 6                                            # Lines to ignore at the beggining of the document
-   Datos_a_ignorar_Final = 0                                             # Lines to ignore at the end of the document
+   Datos_a_ignorar_Inicio = 6                                            # Lines to ignore at the beggining of the document + 1
+   Datos_a_ignorar_Final = 5                                             # Lines to ignore at the end of the document
    
    
    
@@ -60,7 +60,7 @@ def Value_extraction():
 
       Lines = Text.split('\n')
    
-      for Line in Lines:
+      for idx, Line in enumerate(Lines):
 
          if '$' in Line:
          
@@ -85,6 +85,18 @@ def Value_extraction():
             Referencias.append(Reference)
 
             Lines_count.append(Line)
+            
+            for i in range(1, 4):
+               
+               next_line = Lines[idx + i]
+                        
+               if 'BENEFICIARIO' in next_line or 'ORDENANTE' in next_line:
+                  Beneficiarios.append(next_line)
+                  break
+                         
+               elif '$' in next_line:
+                           
+                  break
 
 
    # Post-Processing of Data Structures
@@ -110,12 +122,14 @@ def Value_extraction():
          Egresos.append(Movimientos[i])
          Fechas_Egresos.append(Fechas[i])
          Referencias_Egresos.append(Referencias[i])
+         Beneficiario_Egresos.append(Beneficiarios[i])
          
       else: 
          
          Ingresos.append(Movimientos[i])
          Fechas_Ingresos.append(Fechas[i])
          Referencias_Ingresos.append(Referencias[i])
+         Beneficiario_Ingresos.append(Beneficiarios[i])
          
    Balance_Line = Lines_count[3]
 
@@ -125,5 +139,5 @@ def Value_extraction():
    Ingreso_Total = float(Balance_values[1].replace(',', ''))
    Egreso_Total = float(Balance_values[2].replace(',', ''))
          
-   return Ingresos, Egresos, Fechas_Ingresos, Fechas_Egresos, Ingreso_Total, Egreso_Total, Referencias_Ingresos, Referencias_Egresos
+   return Ingresos, Egresos, Fechas_Ingresos, Fechas_Egresos, Ingreso_Total, Egreso_Total, Referencias_Ingresos, Referencias_Egresos, Beneficiario_Ingresos, Beneficiario_Egresos
 

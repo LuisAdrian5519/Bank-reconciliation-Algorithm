@@ -5,7 +5,7 @@ def Value_extraction():
    #         INSERT DATA HERE  :D
    
    
-   Nombre_del_archivo_Excel = "Conciliación Banbajio Cta.01 Enero 2024.xlsx"          # File
+   Nombre_del_archivo_Excel = "C:/Users/AUXILIARAMN/Documents/LUIS_ADRIAN/Bank-reconciliation-Algorithm/Conciliación Banbajio Cta.01 Enero 2024.xlsx"          # File
    Columna_para_fechas = 0                                                            # Excel Column for Dates data
    Columna_para_beneficiario = 1                                                      # Excel Column for Beneficiary data
    Columna_para_referencias = 2                                                       # Excel Column for References data

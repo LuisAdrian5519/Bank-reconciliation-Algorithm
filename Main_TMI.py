@@ -1,7 +1,6 @@
 # External libraries
 
 import pandas as pd
-import openpyxl
 
 # Local modules
 
@@ -10,7 +9,7 @@ import Excel_Extraction as Excel
 
 # Data Set-up
 
-Lista_de_valores_MNA_BBVA_Ingresos, Lista_de_valores_MNA_BBVA_Egresos, Lista_de_valores_MNA_BBVA_Fechas_Ingresos, Lista_de_valores_MNA_BBVA_Fechas_Egresos, Ingreso_Total, Egreso_Total, Referencias_MNA_BBVA_Ingresos, Referencias_MNA_BBVA_Egresos = PDF.Value_extraction()
+Lista_de_valores_MNA_BBVA_Ingresos, Lista_de_valores_MNA_BBVA_Egresos, Lista_de_valores_MNA_BBVA_Fechas_Ingresos, Lista_de_valores_MNA_BBVA_Fechas_Egresos, Ingreso_Total, Egreso_Total, Referencias_MNA_BBVA_Ingresos, Referencias_MNA_BBVA_Egresos, Beneficiarios_MNA_BBVA_Ingresos, Beneficiarios_MNA_BBVA_Egresos = PDF.Value_extraction()
 Lista_de_valores_Auxiliar_Ingresos, Lista_de_valores_Auxiliar_Egresos, Lista_de_valores_Auxiliar_Fechas_Ingresos, Lista_de_valores_Auxiliar_Fechas_Egresos, Referencias_Auxiliar_Ingresos, Referencias_Auxiliar_Egresos, Beneficiarios_Auxiliar_Ingresos, Beneficiarios_Auxiliar_Egresos = Excel.Value_extraction()
 
 print("")
@@ -26,14 +25,14 @@ print("")
 Suma_Ingresos_MNA_BBVA = sum(Lista_de_valores_MNA_BBVA_Ingresos)
 Suma_Egresos_MNA_BBVA = sum(Lista_de_valores_MNA_BBVA_Egresos)
 
-print(f"\033[1m                    Banco  |  Base de datos Capturada \033[0m ")
+print(f"\033[1m                    Banco  |  Base de datos Capturada \033[0m")
 print("")
-print(f"Ingresos:     {Ingreso_Total}  -  {Suma_Ingresos_MNA_BBVA}  ")
+print(f"Ingresos:     {Ingreso_Total}  -  {Suma_Ingresos_MNA_BBVA}")
 print("")
 print(f"Diferencia:              {Ingreso_Total - Suma_Ingresos_MNA_BBVA}")
 print("---------------------------------------------------------")
 print("")
-print(f"Egresos:     {Egreso_Total}  -  {Suma_Egresos_MNA_BBVA}  ")
+print(f"Egresos:     {Egreso_Total}  -  {Suma_Egresos_MNA_BBVA}")
 print("")
 print(f"Diferencia:              {Egreso_Total - Suma_Egresos_MNA_BBVA}")
 print("---------------------------------------------------------")
@@ -148,25 +147,29 @@ Referencias_Auxiliar_Egresos = [x for x in Referencias_Auxiliar_Egresos if x != 
 Inconsistencias_Ingresos_MNA_BBVA = {
     'Fechas': Fechas_en_ninguna_lista_Ingresos_MNA_BBVA,
     'Valores': Valores_en_ninguna_lista_MNA_BBVA_Ingresos,
-    'Referencias': Referencias_MNA_BBVA_Ingresos}
+    'Referencias': Referencias_MNA_BBVA_Ingresos, 
+    'Beneficiario / Ordenante': Beneficiarios_MNA_BBVA_Ingresos}
 
 #    BBVA Outcome
 Inconsistencias_Egresos_MNA_BBVA = {
     'Fechas': Fechas_en_ninguna_lista_Egresos_MNA_BBVA,
     'Valores': Valores_en_ninguna_lista_MNA_BBVA_Egresos,
-    'Referencias': Referencias_MNA_BBVA_Egresos}
+    'Referencias': Referencias_MNA_BBVA_Egresos, 
+    'Beneficiario / Ordenante': Beneficiarios_MNA_BBVA_Egresos}
 
 #    Excel Income
 Inconsistencias_Ingresos_Auxiliar = {
     'Fechas': Fechas_en_ninguna_lista_Ingresos_auxiliar,
     'Valores': Valores_en_ninguna_lista_auxiliar_Ingresos,
-    'Referencias': Referencias_Auxiliar_Ingresos}
+    'Referencias': Referencias_Auxiliar_Ingresos, 
+    'Beneficiario / Ordenante': Beneficiarios_Auxiliar_Ingresos}
 
 #    Excel Outcome
 Inconsistencias_Egresos_Auxiliar = {
     'Fechas': Fechas_en_ninguna_lista_Egresos_auxiliar,
     'Valores': Valores_en_ninguna_lista_auxiliar_Egresos,
-    'Referencias': Referencias_Auxiliar_Egresos}
+    'Referencias': Referencias_Auxiliar_Egresos, 
+    'Beneficiario / Ordenante': Beneficiarios_Auxiliar_Ingresos}
 
 #   Dataframes generation
 
@@ -177,19 +180,19 @@ Tabla_Inconsistencias_Egresos_Auxiliar = pd.DataFrame(Inconsistencias_Egresos_Au
 
 #  Header concatenation
 
-general_header_ingresos_banco = pd.DataFrame([["Ingresos registrados en Banco y no en Auxiliar", "", ""]],
-                                             columns = ['Fechas', 'Valores', 'Referencias'])
-general_header_egresos_banco = pd.DataFrame([["Egresos registrados en Banco y no en Auxiliar", "", ""]],
-                                             columns = ['Fechas', 'Valores', 'Referencias'])
-general_header_ingresos_auxiliar = pd.DataFrame([["Ingresos registrados en Auxiliar y no en Banco", "", ""]],
-                                             columns = ['Fechas', 'Valores', 'Referencias'])
-general_header_egresos_auxiliar = pd.DataFrame([["Egresos registrados en Auxiliar y no en Banco", "", ""]],
-                                             columns = ['Fechas', 'Valores', 'Referencias'])
+general_header_ingresos_banco = pd.DataFrame([["Ingresos registrados en Banco y no en Auxiliar", "", "", ""]],
+                                             columns = ['Fechas', 'Valores', 'Referencias', 'Beneficiario / Ordenante'])
+general_header_egresos_banco = pd.DataFrame([["Egresos registrados en Banco y no en Auxiliar", "", "", ""]],
+                                             columns = ['Fechas', 'Valores', 'Referencias', 'Beneficiario / Ordenante'])
+general_header_ingresos_auxiliar = pd.DataFrame([["Ingresos registrados en Auxiliar y no en Banco", "", "", ""]],
+                                             columns = ['Fechas', 'Valores', 'Referencias', 'Beneficiario / Ordenante'])
+general_header_egresos_auxiliar = pd.DataFrame([["Egresos registrados en Auxiliar y no en Banco", "", "", ""]],
+                                             columns = ['Fechas', 'Valores', 'Referencias', 'Beneficiario / Ordenante'])
 
-Tabla_Inconsistencias_Ingresos_MNA_BBVA = pd.concat([general_header_ingresos_banco, Tabla_Inconsistencias_Ingresos_MNA_BBVA], ignore_index=True)
-Tabla_Inconsistencias_Egresos_MNA_BBVA = pd.concat([general_header_egresos_banco, Tabla_Inconsistencias_Egresos_MNA_BBVA], ignore_index=True)
-Tabla_Inconsistencias_Ingresos_Auxiliar = pd.concat([general_header_ingresos_auxiliar, Tabla_Inconsistencias_Ingresos_Auxiliar], ignore_index=True)
-Tabla_Inconsistencias_Egresos_Auxiliar = pd.concat([general_header_egresos_auxiliar, Tabla_Inconsistencias_Egresos_Auxiliar], ignore_index=True)
+Tabla_Inconsistencias_Ingresos_MNA_BBVA = pd.concat([general_header_ingresos_banco, Tabla_Inconsistencias_Ingresos_MNA_BBVA], ignore_index = True)
+Tabla_Inconsistencias_Egresos_MNA_BBVA = pd.concat([general_header_egresos_banco, Tabla_Inconsistencias_Egresos_MNA_BBVA], ignore_index = True)
+Tabla_Inconsistencias_Ingresos_Auxiliar = pd.concat([general_header_ingresos_auxiliar, Tabla_Inconsistencias_Ingresos_Auxiliar], ignore_index = True)
+Tabla_Inconsistencias_Egresos_Auxiliar = pd.concat([general_header_egresos_auxiliar, Tabla_Inconsistencias_Egresos_Auxiliar], ignore_index = True)
 
 #   Excel file export
 
