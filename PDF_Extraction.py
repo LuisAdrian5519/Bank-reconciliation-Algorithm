@@ -6,8 +6,8 @@ def Value_extraction():
    
    
    
-   Nombre_del_archivo_PDF = "C:/Users/AUXILIARAMN/Documents/LUIS_ADRIAN/Bank-reconciliation-Algorithm/TMI Banbajio Edo Cta Enero 2024.pdf"        # File
-   Páginas_a_leer = 15                                                   # Number Pages
+   Nombre_del_archivo_PDF = "TMI Banbajio Edo Cta Abril 2024.pdf"        # File
+   Páginas_a_leer = 25                                                   # Number Pages
    Datos_a_ignorar_Inicio = 6                                            # Lines to ignore at the beggining of the document + 1
    Datos_a_ignorar_Final = 5                                             # Lines to ignore at the end of the document
    
@@ -72,7 +72,7 @@ def Value_extraction():
             Reference = ' '.join(elements_between)
             
             Movimiento = Line.split('$')[1].strip() 
-            Movimiento = float(Movimiento.replace(',', ''))
+            Movimiento = float(Movimiento.replace(',', '').replace('-', ''))
             Movimientos.append(Movimiento)
             
             Fecha = Line.split()[0]
@@ -87,16 +87,18 @@ def Value_extraction():
             Lines_count.append(Line)
             
             for i in range(1, 4):
+
+               if idx + i < len(Lines):
                
-               next_line = Lines[idx + i]
+                  next_line = Lines[idx + i]
                         
-               if 'BENEFICIARIO' in next_line or 'ORDENANTE' in next_line:
-                  Beneficiarios.append(next_line)
-                  break
+                  if 'BENEFICIARIO' in next_line or 'ORDENANTE' in next_line:
+                     Beneficiarios.append(next_line)
+                     break
                          
-               elif '$' in next_line:
-                           
-                  break
+                  elif '$' in next_line:
+                     Beneficiarios.append('N/A')
+                     break
 
 
    # Post-Processing of Data Structures
@@ -112,6 +114,9 @@ def Value_extraction():
    
    Referencias = Referencias[Datos_a_ignorar_Inicio:]
    Referencias = Referencias[:-Datos_a_ignorar_Final]
+
+   Beneficiarios = Beneficiarios[Datos_a_ignorar_Inicio:]
+   Beneficiarios = Beneficiarios[:-Datos_a_ignorar_Final]
 
    Fechas = [int(char) for char in Fechas]
    
@@ -140,4 +145,7 @@ def Value_extraction():
    Egreso_Total = float(Balance_values[2].replace(',', ''))
          
    return Ingresos, Egresos, Fechas_Ingresos, Fechas_Egresos, Ingreso_Total, Egreso_Total, Referencias_Ingresos, Referencias_Egresos, Beneficiario_Ingresos, Beneficiario_Egresos
+
+
+Ingresos, Egresos, Fechas_Ingresos, Fechas_Egresos, Ingreso_Total, Egreso_Total, Referencias_Ingresos, Referencias_Egresos, Beneficiario_Ingresos, Beneficiario_Egresos = Value_extraction()
 

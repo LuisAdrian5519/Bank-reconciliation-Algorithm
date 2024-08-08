@@ -84,7 +84,7 @@ def valores_dentro_del_margen(valor1, valor2, margen):
 
 # Main function: Comparison between lists
 
-def Comparador(Lista_de_valores_Banco, Lista_de_Fechas_Banco, Lista_de_valores_Auxiliar, Lista_de_Fechas_Auxiliar, Valores_en_ambas_listas, Fechas_en_ambas_listas, Valores_en_ninguna_lista, Fechas_en_ninguna_lista, Referencias):
+def Comparador(Lista_de_valores_Banco, Lista_de_Fechas_Banco, Lista_de_valores_Auxiliar, Lista_de_Fechas_Auxiliar, Valores_en_ambas_listas, Fechas_en_ambas_listas, Valores_en_ninguna_lista, Fechas_en_ninguna_lista, Referencias, Beneficiarios):
 
    for i, A in enumerate(Lista_de_valores_Banco):
     
@@ -106,6 +106,7 @@ def Comparador(Lista_de_valores_Banco, Lista_de_Fechas_Banco, Lista_de_valores_A
                print("")
                Lista_de_valores_Auxiliar[j] = 0
                Referencias[i] = "0"
+               Beneficiarios[i] = "0"
                break
 
        if not Found:
@@ -125,21 +126,26 @@ def Comparador(Lista_de_valores_Banco, Lista_de_Fechas_Banco, Lista_de_valores_A
 
 
 # Workflow Cycle 1: Income Recorded in the Bank but not in Excel
-Comparador(Lista_de_valores_MNA_BBVA_Ingresos, Lista_de_valores_MNA_BBVA_Fechas_Ingresos, Lista_de_valores_Auxiliar_Ingresos_Copia, Lista_de_valores_Auxiliar_Fechas_Ingresos, Ingresos_en_ambas_listas_MNA_BBVA, Fechas_en_ambas_listas_Ingresos_MNA_BBVA, Valores_en_ninguna_lista_MNA_BBVA_Ingresos, Fechas_en_ninguna_lista_Ingresos_MNA_BBVA, Referencias_MNA_BBVA_Ingresos)
+Comparador(Lista_de_valores_MNA_BBVA_Ingresos, Lista_de_valores_MNA_BBVA_Fechas_Ingresos, Lista_de_valores_Auxiliar_Ingresos_Copia, Lista_de_valores_Auxiliar_Fechas_Ingresos, Ingresos_en_ambas_listas_MNA_BBVA, Fechas_en_ambas_listas_Ingresos_MNA_BBVA, Valores_en_ninguna_lista_MNA_BBVA_Ingresos, Fechas_en_ninguna_lista_Ingresos_MNA_BBVA, Referencias_MNA_BBVA_Ingresos, Beneficiarios_MNA_BBVA_Ingresos)
 
 # Workflow Cycle 2: Outcome Recorded in the Bank but not in Excel
-Comparador(Lista_de_valores_MNA_BBVA_Egresos, Lista_de_valores_MNA_BBVA_Fechas_Egresos, Lista_de_valores_Auxiliar_Egresos_Copia, Lista_de_valores_Auxiliar_Fechas_Egresos, Egresos_en_ambas_listas_MNA_BBVA, Fechas_en_ambas_listas_Egresos_MNA_BBVA, Valores_en_ninguna_lista_MNA_BBVA_Egresos, Fechas_en_ninguna_lista_Egresos_MNA_BBVA, Referencias_MNA_BBVA_Egresos)
+Comparador(Lista_de_valores_MNA_BBVA_Egresos, Lista_de_valores_MNA_BBVA_Fechas_Egresos, Lista_de_valores_Auxiliar_Egresos_Copia, Lista_de_valores_Auxiliar_Fechas_Egresos, Egresos_en_ambas_listas_MNA_BBVA, Fechas_en_ambas_listas_Egresos_MNA_BBVA, Valores_en_ninguna_lista_MNA_BBVA_Egresos, Fechas_en_ninguna_lista_Egresos_MNA_BBVA, Referencias_MNA_BBVA_Egresos, Beneficiarios_MNA_BBVA_Egresos)
 
 # Workflow Cycle 3: Income Recorded in Excel but not in the Bank
-Comparador(Lista_de_valores_Auxiliar_Ingresos, Lista_de_valores_Auxiliar_Fechas_Ingresos, Lista_de_valores_MNA_BBVA_Ingresos, Lista_de_valores_MNA_BBVA_Fechas_Ingresos, Ingresos_en_ambas_listas_auxiliar, Fechas_en_ambas_listas_Ingresos_auxiliar, Valores_en_ninguna_lista_auxiliar_Ingresos, Fechas_en_ninguna_lista_Ingresos_auxiliar, Referencias_Auxiliar_Ingresos)
+Comparador(Lista_de_valores_Auxiliar_Ingresos, Lista_de_valores_Auxiliar_Fechas_Ingresos, Lista_de_valores_MNA_BBVA_Ingresos, Lista_de_valores_MNA_BBVA_Fechas_Ingresos, Ingresos_en_ambas_listas_auxiliar, Fechas_en_ambas_listas_Ingresos_auxiliar, Valores_en_ninguna_lista_auxiliar_Ingresos, Fechas_en_ninguna_lista_Ingresos_auxiliar, Referencias_Auxiliar_Ingresos, Beneficiarios_Auxiliar_Ingresos)
 
 # Workflow Cycle 3: Outcome Recorded in Excel but not in the Bank
-Comparador(Lista_de_valores_Auxiliar_Egresos, Lista_de_valores_Auxiliar_Fechas_Egresos, Lista_de_valores_MNA_BBVA_Egresos, Lista_de_valores_MNA_BBVA_Fechas_Egresos, Egresos_en_ambas_listas_auxiliar, Fechas_en_ambas_listas_Egresos_auxiliar, Valores_en_ninguna_lista_auxiliar_Egresos, Fechas_en_ninguna_lista_Egresos_auxiliar, Referencias_Auxiliar_Egresos)
+Comparador(Lista_de_valores_Auxiliar_Egresos, Lista_de_valores_Auxiliar_Fechas_Egresos, Lista_de_valores_MNA_BBVA_Egresos, Lista_de_valores_MNA_BBVA_Fechas_Egresos, Egresos_en_ambas_listas_auxiliar, Fechas_en_ambas_listas_Egresos_auxiliar, Valores_en_ninguna_lista_auxiliar_Egresos, Fechas_en_ninguna_lista_Egresos_auxiliar, Referencias_Auxiliar_Egresos, Beneficiarios_Auxiliar_Egresos)
 
 Referencias_MNA_BBVA_Ingresos = [x for x in Referencias_MNA_BBVA_Ingresos if x != "0"]
 Referencias_MNA_BBVA_Egresos = [x for x in Referencias_MNA_BBVA_Egresos if x != "0"]
 Referencias_Auxiliar_Ingresos = [x for x in Referencias_Auxiliar_Ingresos if x != "0"]
 Referencias_Auxiliar_Egresos = [x for x in Referencias_Auxiliar_Egresos if x != "0"]
+
+Beneficiarios_MNA_BBVA_Ingresos = [x for x in Beneficiarios_MNA_BBVA_Ingresos if x != "0"]
+Beneficiarios_MNA_BBVA_Egresos = [x for x in Beneficiarios_MNA_BBVA_Egresos if x != "0"]
+Beneficiarios_Auxiliar_Ingresos = [x for x in Beneficiarios_Auxiliar_Ingresos if x != "0"]
+Beneficiarios_Auxiliar_Egresos = [x for x in Beneficiarios_Auxiliar_Egresos if x != "0"]
 
 # Pandas Dataframe definition and Excel Export
 
@@ -169,7 +175,7 @@ Inconsistencias_Egresos_Auxiliar = {
     'Fechas': Fechas_en_ninguna_lista_Egresos_auxiliar,
     'Valores': Valores_en_ninguna_lista_auxiliar_Egresos,
     'Referencias': Referencias_Auxiliar_Egresos, 
-    'Beneficiario / Ordenante': Beneficiarios_Auxiliar_Ingresos}
+    'Beneficiario / Ordenante': Beneficiarios_Auxiliar_Egresos}
 
 #   Dataframes generation
 

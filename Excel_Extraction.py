@@ -5,7 +5,7 @@ def Value_extraction():
    #         INSERT DATA HERE  :D
    
    
-   Nombre_del_archivo_Excel = "C:/Users/AUXILIARAMN/Documents/LUIS_ADRIAN/Bank-reconciliation-Algorithm/Conciliación Banbajio Cta.01 Enero 2024.xlsx"          # File
+   Nombre_del_archivo_Excel = "TMI - Auxiliar Bancos Abril 2024.xls"          # File
    Columna_para_fechas = 0                                                            # Excel Column for Dates data
    Columna_para_beneficiario = 1                                                      # Excel Column for Beneficiary data
    Columna_para_referencias = 2                                                       # Excel Column for References data
@@ -56,10 +56,6 @@ def Value_extraction():
    Ingresos = [valor for valor in Ingresos if valor != 0]
    Egresos = [valor for valor in Egresos if valor != 0]
    
-   Ingresos = Ingresos[:-5]
-   Ingresos_aux = Ingresos_aux[:-5]
-   Egresos = Egresos[:-5]
-   
    # Excel Postprocessing - Separation into income and outcome
    
    for i in range(len(Ingresos_aux)):
@@ -68,12 +64,12 @@ def Value_extraction():
        
            Fechas_Egresos.append(Dias[i])
            Referencias_Egresos.append(Referencias_General_Auxiliar[i])
-           Beneficiarios_Ingresos.append(Beneficiarios_General[i])
+           Beneficiarios_Egresos.append(Beneficiarios_General[i])
            
        else:
            
            Fechas_Ingresos.append(Dias[i])
            Referencias_Ingresos.append(Referencias_General_Auxiliar[i])
-           Beneficiarios_Egresos.append(Beneficiarios_General[i])
+           Beneficiarios_Ingresos.append(Beneficiarios_General[i])
     
    return Ingresos, Egresos, Fechas_Ingresos, Fechas_Egresos, Referencias_Ingresos, Referencias_Egresos, Beneficiarios_Ingresos, Beneficiarios_Egresos
