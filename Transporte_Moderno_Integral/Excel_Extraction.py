@@ -5,12 +5,14 @@ def Value_extraction():
    #         INSERT DATA HERE  :D
    
    
-   Nombre_del_archivo_Excel = "TMI - Auxiliar Bancos Abril 2024.xls"          # File
+   Nombre_del_archivo_Excel = "TMI - Auxiliar Bancos Abril 2024.xls"                  # File
    Columna_para_fechas = 0                                                            # Excel Column for Dates data
    Columna_para_beneficiario = 1                                                      # Excel Column for Beneficiary data
    Columna_para_referencias = 2                                                       # Excel Column for References data
    Columna_para_ingresos = 3                                                          # Excel Column for Incomes data
    Columna_para_egresos = 4                                                           # Excel Column for Outcomes data
+   
+   HEADER = 18                                                                        # Rows over the table unnecessary for analysis
    
    
    #        Beggining of algorithm
@@ -42,7 +44,7 @@ def Value_extraction():
 
    # Excel Processing - Reading and Logging
 
-   for row in Dataframe.iter_rows(2, Dataframe.max_row - 1):
+   for row in Dataframe.iter_rows(HEADER, Dataframe.max_row):
         
        Fechas.append(row[Columna_para_fechas].value)
        Ingresos.append(row[Columna_para_ingresos].value)
