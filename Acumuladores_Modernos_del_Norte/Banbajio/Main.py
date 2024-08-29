@@ -76,7 +76,7 @@ def Dataframe_Construction(Fechas_en_ninguna_lista, valores_en_ninguna_lista, Re
     
     return Inconsistencias_Dataframe
 
-def Excel_Construction(Table_title, Sheet_Title, Tabla_Inconsistencias):
+def Excel_Construction(Table_title, Tabla_Inconsistencias):
     
     General_header = pd.DataFrame([[Table_title, "", "", ""]],
     columns = ['Fechas', 'Importe', 'Referencias', 'Beneficiario / Ordenante'])
@@ -154,7 +154,7 @@ Beneficiarios_MNA_BBVA_Ingresos = [x for x in Beneficiarios_MNA_BBVA_Ingresos if
 
 #    BBVA Income - Dataframe generation and Excel Construction
 Tabla_Inconsistencias_Ingresos_MNA_BBVA = Dataframe_Construction(Fechas_en_ninguna_lista_Ingresos_MNA_BBVA, Valores_en_ninguna_lista_MNA_BBVA_Ingresos, Referencias_MNA_BBVA_Ingresos, Beneficiarios_MNA_BBVA_Ingresos)
-Tabla_Inconsistencias_Ingresos_MNA_BBVA = Excel_Construction("Ingresos registrados en Banco y no en Auxiliar", "Ingresos Banco", Tabla_Inconsistencias_Ingresos_MNA_BBVA)
+Tabla_Inconsistencias_Ingresos_MNA_BBVA = Excel_Construction("Ingresos registrados en Banco y no en Auxiliar", Tabla_Inconsistencias_Ingresos_MNA_BBVA)
 
 
 # Work Cycle 2: Outcome Recorded in the Bank but not in Excel
@@ -164,7 +164,7 @@ Beneficiarios_MNA_BBVA_Egresos = [x for x in Beneficiarios_MNA_BBVA_Egresos if x
 
 #    BBVA Outcome - Dataframe generation and Excel Construction
 Tabla_Inconsistencias_Egresos_MNA_BBVA = Dataframe_Construction(Fechas_en_ninguna_lista_Egresos_MNA_BBVA, Valores_en_ninguna_lista_MNA_BBVA_Egresos, Referencias_MNA_BBVA_Egresos, Beneficiarios_MNA_BBVA_Egresos)
-Tabla_Inconsistencias_Egresos_MNA_BBVA = Excel_Construction("Egresos registrados en Banco y no en Auxiliar", "Egresos Banco", Tabla_Inconsistencias_Egresos_MNA_BBVA)
+Tabla_Inconsistencias_Egresos_MNA_BBVA = Excel_Construction("Egresos registrados en Banco y no en Auxiliar", Tabla_Inconsistencias_Egresos_MNA_BBVA)
 
 
 # Work Cycle 3: Income Recorded in Excel but not in the Bank
@@ -174,7 +174,7 @@ Beneficiarios_Auxiliar_Ingresos = [x for x in Beneficiarios_Auxiliar_Ingresos if
 
 #    Excel Income - Dataframe generation and Excel Construction
 Tabla_Inconsistencias_Ingresos_Auxiliar = Dataframe_Construction(Fechas_en_ninguna_lista_Ingresos_auxiliar, Valores_en_ninguna_lista_auxiliar_Ingresos, Referencias_Auxiliar_Ingresos, Beneficiarios_Auxiliar_Ingresos)
-Tabla_Inconsistencias_Ingresos_Auxiliar = Excel_Construction("Ingresos registrados en Auxiliar y no en Banco", "Ingresos Auxiliar", Tabla_Inconsistencias_Ingresos_Auxiliar)
+Tabla_Inconsistencias_Ingresos_Auxiliar = Excel_Construction("Ingresos registrados en Auxiliar y no en Banco", Tabla_Inconsistencias_Ingresos_Auxiliar)
 
 
 # Work Cycle 3: Outcome Recorded in Excel but not in the Bank
@@ -184,7 +184,7 @@ Beneficiarios_Auxiliar_Egresos = [x for x in Beneficiarios_Auxiliar_Egresos if x
 
 #    Excel Outcome - Dataframe generation and Excel Construction
 Tabla_Inconsistencias_Egresos_Auxiliar = Dataframe_Construction(Fechas_en_ninguna_lista_Egresos_auxiliar, Valores_en_ninguna_lista_auxiliar_Egresos, Referencias_Auxiliar_Egresos, Beneficiarios_Auxiliar_Egresos)
-Tabla_Inconsistencias_Egresos_Auxiliar = Excel_Construction("Egresos registrados en Auxiliar y no en Banco", "Egresos Auxiliar", Tabla_Inconsistencias_Egresos_Auxiliar)
+Tabla_Inconsistencias_Egresos_Auxiliar = Excel_Construction("Egresos registrados en Auxiliar y no en Banco", Tabla_Inconsistencias_Egresos_Auxiliar)
 
 #   Excel file export
 
