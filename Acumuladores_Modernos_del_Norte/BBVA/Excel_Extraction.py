@@ -4,16 +4,15 @@ from datetime import datetime
 def Value_extraction():
 
     #         INSERT DATA HERE  :D
-   
-   
-    Nombre_del_archivo_Excel = "C:/Users/AUXILIARAMN/Documents/LUIS_ADRIAN/AMN_Automation/Auxiliar de bancos_ENE.xlsx"          # File
+                                                            
+    Nombre_del_archivo_Excel = "Auxiliar_de_bancos_ENERO_BBVA.xlsx"                    # File
     Columna_para_fechas = 1                                                            # Excel Column for Dates data
     Columna_para_beneficiario = 5                                                      # Excel Column for Beneficiary data
-    Columna_para_referencias = 6                                                       # Excel Column for References data
+    Columna_para_referencias = 7                                                       # Excel Column for References data
     Columna_para_ingresos = 9                                                          # Excel Column for Incomes data
     Columna_para_egresos = 8                                                           # Excel Column for Outcomes data
    
-    HEADER = 19                                                                        # Rows over the table unnecessary for analysis
+    HEADER = 17                                                                        # Rows over the table unnecessary for analysis
    
    
     #        Beggining of algorithm

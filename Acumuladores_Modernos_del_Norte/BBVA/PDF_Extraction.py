@@ -4,13 +4,10 @@ def Value_extraction():
    
    #         INSERT DATA HERE  :D
    
-   
-   
-   Nombre_del_archivo_PDF = "TMI Banbajio Edo Cta Abril 2024.pdf"        # File
-   Páginas_a_leer = 25                                                   # Number Pages
+   Nombre_del_archivo_PDF = "AMN_BBVA_Edo_Cta_Enero_2024.pdf"            # File
+   Páginas_a_leer = 6                                                    # Number Pages
    Datos_a_ignorar_Inicio = 6                                            # Lines to ignore at the beggining of the document + 1
    Datos_a_ignorar_Final = 5                                             # Lines to ignore at the end of the document
-   
    
    
    #        Beggining of algorithm
